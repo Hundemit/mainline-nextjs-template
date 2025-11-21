@@ -1,0 +1,20 @@
+/** @type {import('prettier').Config} */
+export default {
+  trailingComma: "all",
+  tabWidth: 2,
+  semi: true,
+  useTabs: false,
+  singleQuote: false,
+  printWidth: 80,
+  plugins: ["prettier-plugin-tailwindcss"],
+  organizeImportsSkipDestructiveCodeActions: true,
+  overrides: [
+    {
+      files: ["src/styles/globals.css"],
+      options: {
+        printWidth: 180,
+      },
+    },
+  ],
+};
+

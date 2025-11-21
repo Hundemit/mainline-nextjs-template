@@ -9,16 +9,16 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const items = [
   {
-    title: "Purpose-built for product development",
-    image: "/features/triage-card.svg",
+    title: "Multiple Chat Models",
+    image: "/features/chat-models.png",
   },
   {
-    title: "Manage projects end-to-end",
-    image: "/features/cycle-card.svg",
+    title: "Next Message Suggestions",
+    image: "/features/suggestions.png",
   },
   {
-    title: "Build momentum and healthy habits",
-    image: "/features/overview-card.svg",
+    title: "Markdown Support for Better Formatting",
+    image: "/features/markdown.png",
   },
 ];
 
@@ -30,19 +30,19 @@ export const Features = () => {
         <div className="relative flex items-center justify-center">
           <DashedLine className="text-muted-foreground" />
           <span className="bg-muted text-muted-foreground absolute px-3 font-mono text-sm font-medium tracking-wide max-md:hidden">
-            MEASURE TWICE. CUT ONCE.
+            EASY TO USE, EASY TO CUSTOMIZE
           </span>
         </div>
 
         {/* Content */}
         <div className="mx-auto mt-10 grid max-w-4xl items-center gap-3 md:gap-0 lg:mt-24 lg:grid-cols-2">
-          <h2 className="text-2xl tracking-tight md:text-4xl lg:text-5xl">
-            Made for modern product teams
+          <h2 className="text-xl tracking-tight md:text-4xl lg:text-3xl">
+            Smarter models. Smarter suggestions. Cleaner output.
           </h2>
           <p className="text-muted-foreground leading-snug">
-            Mainline is built on the habits that make the best product teams
-            successful: staying focused, moving quickly, and always aiming for
-            high-quality work.
+            The latest AI models, intuitive suggestions for your next step, and
+            a clear, appealing layout create a productive and enjoyable user
+            experience.
           </p>
         </div>
 
@@ -57,9 +57,9 @@ export const Features = () => {
                       src={item.image}
                       alt={`${item.title} interface`}
                       fill
-                      className="object-cover object-left-top ps-4 pt-2"
+                      className="rounded-l-lg border object-cover object-left-top ps-4 pt-2"
                     />
-                    <div className="from-background absolute inset-0 z-10 bg-linear-to-t via-transparent to-transparent" />
+                    <div className="from-card absolute inset-0 z-10 bg-linear-to-t via-transparent to-transparent" />
                   </div>
 
                   <Link

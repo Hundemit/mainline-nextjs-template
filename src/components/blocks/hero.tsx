@@ -2,14 +2,20 @@ import Image from "next/image";
 
 import {
   ArrowRight,
+  ArrowUpRight,
   Blend,
   ChartNoAxesColumn,
   CircleDot,
+  CirclePlay,
   Diamond,
 } from "lucide-react";
 
 import { DashedLine } from "@/components/dashed-line";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { Chatbot } from "@/components/chatbot";
+import DotGrid from "@/components/DotGrid";
 
 const features = [
   {
@@ -36,79 +42,69 @@ const features = [
 
 export const Hero = () => {
   return (
-    <section className="py-28 lg:py-32 lg:pt-44">
-      <div className="container flex flex-col justify-between gap-8 md:gap-14 lg:flex-row lg:gap-20">
-        {/* Left side - Main content */}
-        <div className="flex-1">
-          <h1 className="text-foreground max-w-160 text-3xl tracking-tight md:text-4xl lg:text-5xl xl:whitespace-nowrap">
-            Mainline Next.js template
+    <section className="relative">
+      <div className="z-10 mx-auto flex min-h-screen max-w-(--breakpoint-xl) flex-col items-center gap-12 px-2 py-12 lg:flex-row">
+        {/* HERO CONTENT */}
+        <div className="bg-background/10 mt-18 h-fit rounded-xl border p-2 backdrop-blur-sm duration-300 sm:p-4">
+          <Badge
+            variant="secondary"
+            className="border-border rounded-full py-1"
+            asChild
+          >
+            <Link href="#">
+              Just released v1.0.0 <ArrowUpRight className="ml-1 size-4" />
+            </Link>
+          </Badge>
+          <h1 className="xl:text-[3.25rem mt-4 max-w-[17ch] text-3xl leading-[1.2]! font-semibold tracking-tighter duration-300 md:text-5xl lg:mt-6 lg:text-[2.75rem]">
+            Customized AI Chatbot <br /> Shadcn UI/IO & Next.js
           </h1>
-
-          <p className="text-muted-foreground text-1xl mt-5 md:text-3xl">
-            Mainline is an open-source website template built with shadcn/ui,
-            Tailwind 4 & Next.js
+          <p className="text-foreground/80 mt-2 max-w-[60ch] duration-300 sm:mt-6 sm:text-lg">
+            Try Out My Chatbot and see what it can do. Feel free to explore it —
+            and use the buttons below to visit the GitHub repo or my profile.
           </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-4 lg:flex-nowrap">
-            <Button asChild>
-              <a href="https://github.com/shadcnblocks/mainline-nextjs-template">
-                Get template
+          <div className="mt-4 flex flex-col items-center gap-4 duration-300 lg:mt-12 lg:flex-row">
+            <Button className="w-full lg:w-auto" asChild>
+              <a
+                target="_blank"
+                href="https://github.com/Hundemit/Next.js-AI-Chatbot"
+              >
+                Github
+                <ArrowRight className="stroke-3" />
               </a>
             </Button>
             <Button
-              variant="outline"
-              className="from-background h-auto gap-2 bg-linear-to-r to-transparent shadow-md"
+              variant="ghost"
+              className="from-background h-auto w-full gap-2 bg-linear-to-r to-transparent shadow-md duration-300 lg:w-auto"
               asChild
             >
               <a
-                href="https://shadcnblocks.com"
-                className="max-w-56 truncate text-start md:max-w-none"
+                target="_blank"
+                href="https://www.janhindemit.de"
+                className="truncate text-start duration-300 md:max-w-none"
               >
-                Built by shadcnblocks.com
-                <ArrowRight className="stroke-3" />
+                About Me
               </a>
             </Button>
           </div>
         </div>
-
-        {/* Right side - Features */}
-        <div className="relative flex flex-1 flex-col justify-center space-y-5 max-lg:pt-10 lg:pl-10">
-          <DashedLine
-            orientation="vertical"
-            className="absolute top-0 left-0 max-lg:hidden"
-          />
-          <DashedLine
-            orientation="horizontal"
-            className="absolute top-0 lg:hidden"
-          />
-          {features.map((feature) => {
-            const Icon = feature.icon;
-            return (
-              <div key={feature.title} className="flex gap-2.5 lg:gap-5">
-                <Icon className="text-foreground mt-1 size-4 shrink-0 lg:size-5" />
-                <div>
-                  <h2 className="font-text text-foreground font-semibold">
-                    {feature.title}
-                  </h2>
-                  <p className="text-muted-foreground max-w-76 text-sm">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+        {/* CHATBOT */}
+        <div className="flex h-[90svh] w-full max-w-[500px] flex-col items-center justify-center rounded-xl bg-stone-300 lg:h-[700px]">
+          <Chatbot />
         </div>
       </div>
 
-      <div className="mt-12 max-lg:ml-6 max-lg:h-[550px] max-lg:overflow-hidden md:mt-20 lg:container lg:mt-24">
-        <div className="relative h-[793px] w-full">
-          <Image
-            src="/hero.webp"
-            alt="hero"
-            fill
-            className="rounded-2xl object-cover object-left-top shadow-lg max-lg:rounded-tr-none"
-          />
-        </div>
+      <div className="absolute bottom-0 left-0 -z-10 h-full w-full mask-[radial-gradient(800px_circle_at_center,white,transparent)]">
+        <DotGrid
+          dotSize={5}
+          gap={15}
+          baseColor="#808080"
+          activeColor="#5227FF"
+          proximity={120}
+          shockRadius={250}
+          shockStrength={5}
+          resistance={750}
+          returnDuration={1.5}
+        />
       </div>
     </section>
   );

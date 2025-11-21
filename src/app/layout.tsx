@@ -139,7 +139,7 @@ export default function RootLayout({
           src="https://tweakcn.com/live-preview.min.js"
         />
       </head>
-      <body className={`${dmSans.variable} ${inter.variable} antialiased`}>
+      <body className={`${dmSans.variable} ${inter.variable} antialiased scroll-smooth`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

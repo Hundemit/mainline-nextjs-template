@@ -48,11 +48,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 ### Pre-built Pages
 
 - Home/Landing page
-- About page
-- Pricing page
 - FAQ page
-- Contact page with form
-- Login/Signup pages
+- Signup page
 
 ### Blocks
 

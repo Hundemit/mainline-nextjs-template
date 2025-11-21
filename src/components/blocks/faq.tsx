@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import {
   Accordion,
   AccordionContent,
@@ -10,52 +8,74 @@ import { cn } from "@/lib/utils";
 
 const categories = [
   {
-    title: "Support",
+    title: "General",
     questions: [
       {
-        question: "How do I update my account without breaking my laptop?",
+        question: "How does the Hindemit AI chatbot work technically?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Hindemit AI is based on Next.js 16, React 19, and TypeScript. Communication with the AI models is handled via the Vercel AI SDK in combination with OpenRouter. Responses are streamed and displayed in real time.",
       },
       {
-        question: "Is support free, or do I need to Google everything?",
+        question: "What prerequisites do I need for the installation?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "You need Node.js 18+, a package manager like npm or pnpm, and an OpenRouter API key. After installation, you can start the project with 'npm run dev'.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "Is Hindemit AI suitable for production environments?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Yes. The chatbot is modular, performant, and fully typed. With streaming, RAG, model selection, and a modern UI, it is well-suited for production deployments.",
       },
     ],
   },
   {
-    title: "Your account",
+    title: "Models & AI",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question:
+          "Which AI models are supported and how can I switch between them?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Supported models include Gemini 2.5 Flash, GPT-5 Nano, and Grok 4.1 Fast. You can switch the model easily using the dropdown in the chat. New models can be added to the MODELS configuration without additional code.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "How are responses streamed in the chat?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "The Vercel AI SDK uses the 'streamText' function, which streams responses token by token. This ensures a smooth real-time experience.",
+      },
+      {
+        question: "How are dynamic suggestions generated?",
+        answer:
+          "After each response, the '/api/suggestions' endpoint is called. Using a suggestion prompt and the chat history, it generates 3–5 follow-up questions as a JSON array.",
       },
     ],
   },
   {
-    title: "Other questions",
+    title: "Features & Functionality",
     questions: [
       {
-        question: "Is support free, or do I need to Google everything?",
+        question:
+          "Can the chatbot correctly render code, tables, and Markdown?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "Yes. Thanks to react-markdown, Shiki, GFM support, and automatic formatting correction, tables, code blocks, and LaTeX are cleanly rendered and can be copied with a button.",
       },
       {
-        question: "Are you going to be subsumed by AI?",
+        question: "How does the RAG system for document integration work?",
         answer:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus voluptates deserunt officia temporibus dignissimos.",
+          "All files in the 'src/data/system-messages/documents/' folder are automatically loaded and passed to each model as context—completely without an external vector database.",
+      },
+      {
+        question: "Can I add my own documents or prompts?",
+        answer:
+          "Yes. New .md or .txt files placed in the documents folder are automatically included. System prompts can also be easily adjusted or extended.",
+      },
+    ],
+  },
+  {
+    title: "Integration & Development",
+    questions: [
+      {
+        question: "How do I integrate the chatbot into my own project?",
+        answer:
+          "You can reuse the entire chatbot component or individual UI and logic modules. The architecture is modular and fully typed, which simplifies integration into any React/Next.js project.",
       },
     ],
   },
@@ -86,9 +106,14 @@ export const FAQ = ({
             )}
             <p className="text-muted-foreground max-w-md leading-snug lg:mx-auto">
               If you can't find what you're looking for,{" "}
-              <Link href="/contact" className="underline underline-offset-4">
+              <a
+                href="https://www.janhindemit.de"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-4"
+              >
                 get in touch
-              </Link>
+              </a>
               .
             </p>
           </div>

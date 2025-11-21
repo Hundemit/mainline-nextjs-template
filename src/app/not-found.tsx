@@ -32,7 +32,7 @@ export default function NotFound() {
               size="lg"
               className="min-w-[200px]"
             >
-              <Link href="/contact">Contact Support</Link>
+              <a href="https://www.janhindemit.de" target="_blank" rel="noopener noreferrer">Contact Support</a>
             </Button>
           </div>
         </div>

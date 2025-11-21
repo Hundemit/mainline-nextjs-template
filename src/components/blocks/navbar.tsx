@@ -38,10 +38,8 @@ const ITEMS = [
       },
     ],
   },
-  { label: "About Us", href: "/about" },
-  { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "https://www.janhindemit.de", external: true },
 ];
 
 export const Navbar = () => {
@@ -57,14 +55,15 @@ export const Navbar = () => {
       )}
     >
       <div className="flex items-center justify-between px-6 py-3">
-        <Link href="/" className="flex shrink-0 items-center gap-2">
+        <Link href="/" className="flex shrink-0 items-center gap-1">
           <Image
             src="/logo.svg"
             alt="logo"
             width={94}
             height={18}
-            className="dark:invert"
+            className="size-5 dark:invert"
           />
+          <span className="font-bold">HI-AI</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -102,15 +101,28 @@ export const Navbar = () => {
                 </NavigationMenuItem>
               ) : (
                 <NavigationMenuItem key={link.label} className="">
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "relative bg-transparent px-1.5 text-sm font-medium transition-opacity hover:opacity-75",
-                      pathname === link.href && "text-muted-foreground",
-                    )}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={cn(
+                        "relative bg-transparent px-1.5 text-sm font-medium transition-opacity hover:opacity-75",
+                      )}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        "relative bg-transparent px-1.5 text-sm font-medium transition-opacity hover:opacity-75",
+                        pathname === link.href && "text-muted-foreground",
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </NavigationMenuItem>
               ),
             )}
@@ -119,19 +131,15 @@ export const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="flex items-center gap-2.5">
-          <ThemeToggle />
-          <Link href="/login" className="max-lg:hidden">
-            <Button variant="outline">
-              <span className="relative z-10">Login</span>
-            </Button>
-          </Link>
           <a
-            href="https://github.com/shadcnblocks/mainline-nextjs-template"
+            target="_blank"
+            href="https://github.com/Hundemit/Next.js-AI-Chatbot"
             className="text-muted-foreground hover:text-foreground transition-colors"
           >
             <Github className="size-4" />
             <span className="sr-only">GitHub</span>
           </a>
+          <ThemeToggle />
 
           {/* Hamburger Menu Button (Mobile Only) */}
           <button
@@ -176,7 +184,7 @@ export const Navbar = () => {
                       openDropdown === link.label ? null : link.label,
                     )
                   }
-                  className="text-primary flex w-full items-center justify-between text-base font-medium"
+                  className="flex w-full items-center justify-between text-base font-medium"
                 >
                   {link.label}
                   <ChevronRight
@@ -206,9 +214,7 @@ export const Navbar = () => {
                         }}
                       >
                         <div className="transition-transform duration-200 group-hover:translate-x-1">
-                          <div className="text-primary font-medium">
-                            {item.title}
-                          </div>
+                          <div className="font-medium">{item.title}</div>
 
                           <p className="text-muted-foreground mt-1 text-sm">
                             {item.description}
@@ -219,12 +225,25 @@ export const Navbar = () => {
                   </div>
                 </div>
               </div>
+            ) : link.external ? (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={cn(
+                  "hover:text-primary/80 py-4 text-base font-medium transition-colors first:pt-0 last:pb-0",
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </a>
             ) : (
               <Link
                 key={link.label}
                 href={link.href}
                 className={cn(
-                  "text-primary hover:text-primary/80 py-4 text-base font-medium transition-colors first:pt-0 last:pb-0",
+                  "hover:text-primary/80 py-4 text-base font-medium transition-colors first:pt-0 last:pb-0",
                   pathname === link.href && "text-muted-foreground",
                 )}
                 onClick={() => setIsMenuOpen(false)}
